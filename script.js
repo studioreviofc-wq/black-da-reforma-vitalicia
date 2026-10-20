@@ -39,12 +39,19 @@ const CONFIG = {
     privacyLabel: 'Política de Privacidade',
   },
 
+  // Cor do botão CTA: 'verde' | 'vermelho' | 'azul' (também testável via ?cta=azul na URL)
+  ctaVariant: 'verde',
+
   // Campos extras enviados junto ao lead
   extra: { source: 'black-da-reforma-vitalicia' },
 };
 
 (function () {
   'use strict';
+
+  /* Variante de cor do CTA */
+  const ctaParam = new URLSearchParams(location.search).get('cta');
+  document.body.dataset.cta = ['verde', 'vermelho', 'azul'].includes(ctaParam) ? ctaParam : CONFIG.ctaVariant;
 
   /* -------------------------------------------------------
      Contagem regressiva
